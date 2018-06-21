@@ -1,6 +1,7 @@
-package com.itexico.user.manager;
+package com.itexico.user.manager.entity;
 
 public class User {
+	
 	private long id;
 	private String user;
 	private String password;
@@ -29,10 +30,4 @@ public class User {
 	public void setCurp(String curp) {
 		this.curp = curp;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", user=" + user + ", password=" + password + ", curp=" + curp + "]";
-	}
-	
-	
 }
