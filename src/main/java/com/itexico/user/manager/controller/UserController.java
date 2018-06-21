@@ -22,13 +22,13 @@ import com.itexico.user.manager.entity.User;
 import com.itexico.user.manager.service.IUserService;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("test")
 
 public class UserController {
 	
 	@Autowired
 	private IUserService userService;
-	@GetMapping("users/{id}")
+	@GetMapping("user/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable("id") Integer id) {
 		User user = userService.getUserById(id);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
@@ -50,12 +50,12 @@ public class UserController {
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);                           
 	} 
 	
-  @PutMapping("users")
+  @PutMapping("user")
 	public ResponseEntity<User> updateUser(@RequestBody User user) {
 		userService.updateUser(user);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
-	@DeleteMapping("users/{id}")
+	@DeleteMapping("user/{id}")
 	public ResponseEntity<Void> deleteUser(@PathVariable("id") Integer id) {
 		userService.deleteUser(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

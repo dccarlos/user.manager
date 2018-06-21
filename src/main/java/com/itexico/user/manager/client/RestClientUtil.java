@@ -17,7 +17,7 @@ public class RestClientUtil {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 	    RestTemplate restTemplate = new RestTemplate();
-	    String url = "http://localhost:8088/users/{id}";
+	    String url = "http://localhost:8080/test/user/{id}";
 	    HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 	    ResponseEntity<User> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, User.class, 1);
 	    User user = responseEntity.getBody();
@@ -29,7 +29,7 @@ public class RestClientUtil {
 	   HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
 	    RestTemplate restTemplate = new RestTemplate();
-	    String url = "http://localhost:8088/users";
+	    String url = "http://localhost:8080/test/user";
 	    HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 	    ResponseEntity<User[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, User[].class);
 	    User[] users = responseEntity.getBody();
@@ -43,7 +43,7 @@ public class RestClientUtil {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
-		String url = "http://localhost:8088/users";
+		String url = "http://localhost:8080/test/user/{id}";
 		User user = new User();
 		//user.setId(1);
 		user.setUser("karina");
@@ -59,7 +59,7 @@ public class RestClientUtil {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
-		String url = "http://localhost:8080/users";
+		String url = "http://localhost:8080/test/user";
 		User user = new User();
 		user.setId(1);
 		user.setUser("karina");
@@ -74,7 +74,7 @@ public class RestClientUtil {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
-	    String url = "http://localhost:8088/users/{id}";
+	    String url = "http://localhost:8080/test/user/{id}";
         HttpEntity<User> requestEntity = new HttpEntity<User>(headers);
         restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, Void.class, 1);      
     } 
