@@ -9,7 +9,7 @@ import javax.swing.tree.TreePath;
 public class UserRowMapper implements RowMapper{
 	public User mapRow(ResultSet row, int rowNum) throws SQLException{
 		User user = new User();
-		user.setUser(row.getString("user"));
+		user.setName("karina");
 		user.setPassword(row.getString("password"));
 		user.setCurp(row.getString("curp"));
 		return user;

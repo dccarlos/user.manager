@@ -24,7 +24,7 @@ public class UserService implements IUserService{
 	}
 	@Override
 	public synchronized boolean addUser(User user){
-                if (userDAO.userExists(user.getUser(), user.getPassword())) {
+                if (userDAO.userExists(user.getName(), user.getPassword())) {
     	          return false;
                 } else {
     	          userDAO.addUser(user);

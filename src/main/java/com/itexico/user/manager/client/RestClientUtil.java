@@ -21,7 +21,7 @@ public class RestClientUtil {
 	    HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 	    ResponseEntity<User> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, User.class, 1);
 	    User user = responseEntity.getBody();
-	    System.out.println("Id:"+user.getId()+", User:"+user.getUser()
+	    System.out.println("Id:"+user.getId()+", User:"+user.getName()
         +", Password: "+user.getPassword());
 		 
    }
@@ -34,7 +34,7 @@ public class RestClientUtil {
 	    ResponseEntity<User[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, User[].class);
 	    User[] users = responseEntity.getBody();
 	    for(User user : users) {
-	    	System.out.println("Id:"+user.getId()+", User:"+user.getUser()
+	    	System.out.println("Id:"+user.getId()+", User:"+user.getName()
 	        +", Password: "+user.getPassword());
 	    }
     }
@@ -45,10 +45,10 @@ public class RestClientUtil {
         RestTemplate restTemplate = new RestTemplate();
 		String url = "http://localhost:8080/test/user/{id}";
 		User user = new User();
-		//user.setId(1);
-		user.setUser("karina");
-		user.setPassword("password");
-		user.setCurp("FRDETGTFR");	
+		user.setId(3);
+		user.setName("name");
+		user.setPassword("password12345");
+		user.setCurp("NAMEFRTGKOHY323");
         HttpEntity<User> requestEntity = new HttpEntity<User>(user, headers);
         URI uri = restTemplate.postForLocation(url, requestEntity);
         System.out.println(uri.getPath());
@@ -59,12 +59,12 @@ public class RestClientUtil {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
-		String url = "http://localhost:8080/test/user";
+		String url = "http://localhost:8080/test/user/{id}";
 		User user = new User();
-		user.setId(1);
-		user.setUser("karina");
-		user.setPassword("password");
-		user.setCurp("FRDETGTFR");
+		user.setId(0);
+		user.setName("usurio");
+		user.setPassword("contraseña");
+		user.setCurp("");
         HttpEntity<User> requestEntity = new HttpEntity<User>(user, headers);
         //restTemplate.put(url, requestEntity);
         URI location = restTemplate.postForLocation(url, requestEntity);

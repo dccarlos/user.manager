@@ -3,20 +3,22 @@ package com.itexico.user.manager.entity;
 public class User {
 	
 	private long id;
-	private String user;
+	private String name;
 	private String password;
 	private String curp;
+	
 	public long getId() {
 		return id;
 	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getUser() {
-		return user;
+	public String getName() {
+		return name;
 	}
-	public void setUser(String user) {
-		this.user = user;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getPassword() {
 		return password;

@@ -38,7 +38,7 @@ public class UserController {
 		List<User> list = userService.getAllUser();
 		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
-	@PostMapping("user")
+	@PostMapping("user/{id}")
 	public ResponseEntity<String> addUser(@RequestBody User user, UriComponentsBuilder builder) {
                
 		boolean flag = userService.addUser(user);
@@ -46,11 +46,11 @@ public class UserController {
 	   return new ResponseEntity<String>(HttpStatus.CONFLICT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
+        headers.setLocation(builder.path("/usuario/{id}").buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);                           
 	} 
 	
-  @PutMapping("user")
+  @PutMapping("user/{id}")
 	public ResponseEntity<User> updateUser(@RequestBody User user) {
 		userService.updateUser(user);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
