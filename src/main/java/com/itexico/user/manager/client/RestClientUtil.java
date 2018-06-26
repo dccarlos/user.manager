@@ -29,7 +29,7 @@ public class RestClientUtil {
 	   HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
 	    RestTemplate restTemplate = new RestTemplate();
-	    String url = "http://localhost:8080/test/user";
+	    String url = "http://localhost:8080/test/users";
 	    HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 	    ResponseEntity<User[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, User[].class);
 	    User[] users = responseEntity.getBody();
@@ -43,9 +43,8 @@ public class RestClientUtil {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
-		String url = "http://localhost:8080/test/user/{id}";
+		String url = "http://localhost:8080/test/user";
 		User user = new User();
-		user.setId(3);
 		user.setName("name");
 		user.setPassword("password12345");
 		user.setCurp("NAMEFRTGKOHY323");
@@ -61,9 +60,8 @@ public class RestClientUtil {
         RestTemplate restTemplate = new RestTemplate();
 		String url = "http://localhost:8080/test/user/{id}";
 		User user = new User();
-		user.setId(0);
-		user.setName("usurio");
-		user.setPassword("contraseña");
+		user.setName("catalina");
+		user.setPassword("catalina");
 		user.setCurp("");
         HttpEntity<User> requestEntity = new HttpEntity<User>(user, headers);
         //restTemplate.put(url, requestEntity);

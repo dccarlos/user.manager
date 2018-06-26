@@ -19,7 +19,7 @@ public class UserDAO implements IUserDAO{
 
 	@Override
 	public User getUserById(int id) {
-		String sql = "SELECT name, password, curp FROM user WHERE id=?";
+		String sql = "SELECT id, name, password, curp FROM user WHERE id=?";
 		RowMapper<User> rowMapper = new BeanPropertyRowMapper<User>(User.class);		
 		User user= jdbcTemplate.queryForObject(sql, rowMapper, id);
 		return user;	
@@ -27,18 +27,18 @@ public class UserDAO implements IUserDAO{
 	
 	@Override
 	public List<User> getAllUser() {
-		String sql = "SELECT name, password, curp FROM user";
+		String sql = "SELECT id, name, password, curp FROM user";
 		RowMapper<User> rowMapper = new BeanPropertyRowMapper<User>(User.class);		
 		return this.jdbcTemplate.query(sql, rowMapper);
 	}
 	
 	@Override
 	public User addUser(User user) {
-		String sql = "INSERT INTO user(id, name, password, curp) values (?, ?, ?, ?)";
-		jdbcTemplate.update(sql, user.getId(), user.getName(), user.getPassword(), user.getCurp());
+		String sql = "INSERT INTO user(name, password, curp) values (?, ?, ?)";
+		jdbcTemplate.update(sql, user.getName(), user.getPassword(), user.getCurp());
 		sql = "SELECT id FROM user WHERE name= ? and password=?";
-	    int userId = jdbcTemplate.queryForObject(sql, Integer.class, user.getName(), user.getPassword());
-	    user.setId(userId);
+	    //int userId = jdbcTemplate.queryForObject(sql, Integer.class, user.getName(), user.getPassword());
+	    //user.setId(userId);
 		return user;
 	}
 	

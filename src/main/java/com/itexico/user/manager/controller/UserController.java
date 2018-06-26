@@ -3,7 +3,6 @@ package com.itexico.user.manager.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.itexico.user.manager.entity.User;
@@ -38,7 +36,7 @@ public class UserController {
 		List<User> list = userService.getAllUser();
 		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
-	@PostMapping("user/{id}")
+	@PostMapping("user")
 	public ResponseEntity<String> addUser(@RequestBody User user, UriComponentsBuilder builder) {
                
 		boolean flag = userService.addUser(user);
@@ -46,7 +44,7 @@ public class UserController {
 	   return new ResponseEntity<String>(HttpStatus.CONFLICT);
         }
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/usuario/{id}").buildAndExpand(user.getId()).toUri());
+        headers.setLocation(builder.path("/usuario").buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);                           
 	} 
 	
